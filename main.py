@@ -8,14 +8,16 @@ with st.sidebar:
 
 subject = st.text_input("主题")
 submit = st.button("开始写作")
-if submit and not api_key:
-    st.info("没有输入api密钥，将使用草木本心的密钥")
 if submit and not subject:
     st.info("请输入生成内容的主题")
     st.stop()
 if submit:
     with st.spinner("AI正在努力创作中，请稍等"):
-        result = generate_xiaohongshu(subject=subject, api_key=api_key)
+        if api_key:
+            result = generate_xiaohongshu(subject=subject, api_key=api_key)
+        else
+            st.info("没有输入api密钥，将使用草木本心的密钥")
+            result = generate_xiaohongshu(subject=subject)
     st.divider()
     #分成左右两列
     left, right = st.columns(2)
