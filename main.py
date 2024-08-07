@@ -15,7 +15,7 @@ if submit:
     with st.spinner("AI正在努力创作中，请稍等"):
         if api_key:
             result = generate_xiaohongshu(subject=subject, api_key=api_key)
-        else
+        else:
             st.info("没有输入api密钥，将使用草木本心的密钥")
             result = generate_xiaohongshu(subject=subject)
     st.divider()
